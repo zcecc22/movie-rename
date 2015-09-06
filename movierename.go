@@ -84,11 +84,15 @@ func main() {
 
 		var selectedMovie tmdb.MovieShort
 
-		if len(moviesList.Results) == 1 && moviesList.Results[0].ReleaseDate[:4] == releaseYear {
+		if len(moviesList.Results) >= 1 && len(moviesList.Results[0].ReleaseDate) >= 4 &&
+			moviesList.Results[0].ReleaseDate[:4] == releaseYear {
+
 			selectedMovie = moviesList.Results[0]
+
 		} else {
+
 			for index, movie := range moviesList.Results {
-				fmt.Println("\nTMDB Match: ", index+1, " Movie: ", movie.Title, " Year: ", movie.ReleaseDate[:4])
+				fmt.Println("\nTMDB Match: ", index+1, " Movie: ", movie.Title, " Year: ", movie.ReleaseDate)
 			}
 
 			fmt.Println("\nSelect match:")
