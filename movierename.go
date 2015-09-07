@@ -14,7 +14,7 @@ import (
 var moviePatterns = []string{`(?i)(\d{4})`}
 
 func strCleanupNonWord(str string) string {
-	regExp := regexp.MustCompile(`\W+`)
+	regExp := regexp.MustCompile(`[\W_]+`)
 	return strings.Trim(regExp.ReplaceAllString(str, " "), ` 	`)
 }
 
