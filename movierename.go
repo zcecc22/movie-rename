@@ -4,11 +4,12 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/ryanbradynd05/go-tmdb"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
+
+	"github.com/ryanbradynd05/go-tmdb"
 )
 
 var moviePatterns = []string{`(?i)(\d{4})`}
@@ -68,7 +69,7 @@ func main() {
 			continue
 		}
 
-		fmt.Println("Show: ", movieName, " Year: ", releaseYear)
+		fmt.Println("Movie: ", movieName, " Year: ", releaseYear)
 
 		moviesList, err := TMDb.SearchMovie(movieName, nil)
 
