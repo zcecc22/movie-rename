@@ -8,7 +8,6 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
-
 	"github.com/ryanbradynd05/go-tmdb"
 )
 
@@ -20,8 +19,8 @@ func strCleanupNonWord(str string) string {
 }
 
 func strCleanupSymbols(str string) string {
-	regExp := regexp.MustCompile(`[/]`)
-	return regExp.ReplaceAllString(str, "_")
+	regExp := regexp.MustCompile(`[/:]`)
+	return regExp.ReplaceAllString(str, " ")
 }
 
 func renameMovie(path string, movieName string, releaseYear string) (string, error) {
