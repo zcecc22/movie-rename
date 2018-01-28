@@ -23,14 +23,14 @@ func strCleanupNonWord(str string) string {
 func renameMovie(path string, movieName string, releaseYear string) (string, error) {
 	ext := filepath.Ext(path)
 	dir := filepath.Dir(path)
-	newName := sanitize.Path(movieName + "." + releaseYear + ext)
-	newPath := filepath.Join(dir, newName)
+	newName := sanitize.Path(sanitize.BaseName(movieName + "." + releaseYear))
+	newPath := filepath.Join(dir, newName+ext)
 
 	if _, err := os.Stat(newPath); err == nil {
-		return newName, errors.New("Destination file already exists.")
+		return newName + ext, errors.New("Destination file already exists.")
 	}
 
-	return newName, os.Rename(path, newPath)
+	return newName + ext, os.Rename(path, newPath)
 }
 
 func MovieInfo(filename string) (string, string, error) {
