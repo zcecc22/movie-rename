@@ -50,7 +50,14 @@ func MovieInfo(filename string) (string, string, error) {
 
 func main() {
 	flag.Parse()
-	TMDb := tmdb.Init("3d6ca007d0677db4a3444067691b6b6a")
+	
+	config := tmdb.Config{
+		APIKey:   "3d6ca007d0677db4a3444067691b6b6a",
+		Proxies:  nil,
+		UseProxy: false,
+	}
+	
+	TMDb := tmdb.Init(config)
 
 	for _, path := range flag.Args() {
 		fmt.Println("\nCurrent Name: ", filepath.Base(path))
